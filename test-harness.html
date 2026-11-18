@@ -1,0 +1,31 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Reality Tear shader smoke test</title>
+<style>html,body,canvas{margin:0;width:100%;height:100%;background:#111}#status{position:fixed;z-index:2;top:12px;left:12px;color:white;font:14px monospace}</style>
+<div id="status">running…</div><canvas id="c"></canvas>
+<script src="src/tear-engine.js"></script>
+<script>
+window.__test = (() => {
+  try {
+    const c = document.getElementById('c');
+    const gl = c.getContext('webgl2');
+    if (!gl) throw new Error('no webgl2');
+    const e = new window.__RealityTearEngineClass(c, { mode: 'fabric', reducedMotion: true });
+    for (const mode of ['curl','glass','xray','fabric']) {
+      e.setMode(mode);
+      e.begin(innerWidth * .44, innerHeight * .48);
+      e.move(innerWidth * .62, innerHeight * .62, 160);
+      e._render(.016, 1.0);
+      e.end();
+    }
+    e.dispose();
+    const result = { ok: true, renderer: gl.getParameter(gl.RENDERER), version: gl.getParameter(gl.VERSION) };
+    document.getElementById('status').textContent = 'OK · ' + result.renderer;
+    return result;
+  } catch (err) {
+    const result = { ok: false, reason: String(err), stack: err.stack };
+    document.getElementById('status').textContent = 'ERROR · ' + result.reason;
+    return result;
+  }
+})();
+</script>

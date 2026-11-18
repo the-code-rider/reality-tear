@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Reality Tear Inspector",
+  "short_name": "Reality Tear",
+  "version": "0.3.0",
+  "description": "A spatial browser inspector: peel, fracture, X-ray, or stretch pages to reveal code, edit CSS live, explode DOM structure, inspect stacking contexts, and trace interactions.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "debugger",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Reality Tear Inspector",
+    "default_popup": "popup/popup.html"
+  },
+  "commands": {
+    "toggle-reality-tear": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X"
+      },
+      "description": "Toggle Reality Tear Inspector using the selected effect"
+    }
+  }
+}

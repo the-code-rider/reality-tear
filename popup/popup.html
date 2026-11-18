@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reality Tear Inspector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="panel">
+    <header class="header">
+      <div>
+        <div class="kicker">Reality Tear</div>
+        <h1>Choose inspection mode</h1>
+      </div>
+      <div class="version">v0.3</div>
+    </header>
+
+    <section class="modes" role="radiogroup" aria-label="Inspection effect">
+      <button class="mode-card" type="button" data-mode="curl" role="radio" aria-checked="false">
+        <span class="preview curl-preview" aria-hidden="true"><i></i></span>
+        <span class="mode-copy"><strong>Page Curl</strong><small>Peel the rendered surface back like a sheet.</small></span>
+      </button>
+
+      <button class="mode-card" type="button" data-mode="glass" role="radio" aria-checked="false">
+        <span class="preview glass-preview" aria-hidden="true"><i></i></span>
+        <span class="mode-copy"><strong>Glass</strong><small>Fracture outward, then break through to code.</small></span>
+      </button>
+
+      <button class="mode-card" type="button" data-mode="xray" role="radio" aria-checked="false">
+        <span class="preview xray-preview" aria-hidden="true"><i></i></span>
+        <span class="mode-copy"><strong>X-Ray</strong><small>Move a live lens over the page without damage.</small></span>
+      </button>
+
+      <button class="mode-card" type="button" data-mode="fabric" role="radio" aria-checked="false">
+        <span class="preview fabric-preview" aria-hidden="true"><i></i></span>
+        <span class="mode-copy"><strong>Fabric</strong><small>Stretch, wrinkle, and fray the page open.</small></span>
+      </button>
+    </section>
+
+    <div class="tool-note">After reveal: <strong>Explode DOM</strong> · <strong>Layers</strong> · <strong>Edit CSS</strong> · <strong>Trace</strong></div>
+
+    <div class="footer">
+      <div class="hint"><kbd>Ctrl</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>X</kbd> uses the selected mode</div>
+      <button id="activate" class="activate" type="button">Inspect this page</button>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </div>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
